@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="libogle.vcxproj" Id="9039a8de-fb9e-43cd-b32c-2c42e6ec7a3c" />
+</Solution>
