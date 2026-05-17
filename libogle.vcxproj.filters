@@ -75,6 +75,18 @@
     <ClInclude Include="include\libogle\o_color.h">
       <Filter>Header Files\Library Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\libogle\o_darray.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_utilities.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_input.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_vertex.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\o_atlas.c">
@@ -123,6 +135,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_color.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_darray.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_mesh_save_obj.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_utilities.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_mesh_save_h.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_mesh_load_obj.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_vertex.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_input.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
