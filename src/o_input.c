@@ -1,4 +1,5 @@
 #include "libogle/o_common.h"
+#include "libogle/o_log.h"
 #include "libogle/o_vector2.h"
 #include "libogle/o_input.h"
 
@@ -47,6 +48,8 @@ int32_t ogle_input_initializer(o_input_t* input, void* data)
 		return -1;
 	}
 
+	OGLE_DO_LOG(OGLE_LOG_LEVEL_INFO, "Initializing input");
+
 	ogle_input_zero(input);
 
 	return 0;
@@ -54,7 +57,7 @@ int32_t ogle_input_initializer(o_input_t* input, void* data)
 
 void ogle_input_uninitializer(o_input_t* input)
 {
-	// nothing to do
+	OGLE_DO_LOG(OGLE_LOG_LEVEL_INFO, "Uninitializing input");
 }
 
 size_t ogle_input_size()

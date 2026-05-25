@@ -1,4 +1,54 @@
 #include <allegro5/allegro_memfile.h>
+#include <time.h>
+#include "libogle/o_common.h"
+#include "libogle/o_file.h"
+
+int32_t ogle_file_write_i32(ALLEGRO_FILE* file, int32_t value)
+{
+	return ogle_file_write_u32_array(file, (const uint32_t*)&value, 1);
+}
+
+int32_t ogle_file_write_i32_array(ALLEGRO_FILE* file, const int32_t* array, size_t size)
+{
+	return ogle_file_write_u32_array(file, (const uint32_t*)array, size);
+}
+
+int32_t ogle_file_write_u32(ALLEGRO_FILE* file, uint32_t value)
+{
+#ifdef ALLEGRO_BIG_ENDIAN
+	ogle_utilities_swap_bytes(&value, sizeof(uint32_t));
+#endif
+
+	if (al_fwrite(file, &value, sizeof(uint32_t)) != sizeof(uint32_t))
+	{
+		return -1;
+	}
+
+	return 0;
+}
+
+int32_t ogle_file_write_u32_array(ALLEGRO_FILE* file, const uint32_t* array, size_t size)
+{
+	for (size_t i = 0; i < size; ++i)
+	{
+		if (ogle_file_write_u32(file, array[i]) < 0)
+		{
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+int32_t ogle_file_write_float(ALLEGRO_FILE* file, float value)
+{
+	return ogle_file_write_u32_array(file, (const uint32_t*)&value, 1);
+}
+
+int32_t ogle_file_write_float_array(ALLEGRO_FILE* file, const float* array, size_t size)
+{
+	return ogle_file_write_u32_array(file, (const uint32_t*)array, size);
+}
 
 static int32_t _ogle_file_load_to_memory(const char* filename, void** data, size_t* size)
 {
@@ -110,7 +160,13 @@ static int32_t _ogle_save_to_c_array(const char* filename, const char* name, con
 		return -1;
 	}
 
-	al_fprintf(file, "// Auto-generated file. Do not edit.\n\n");
+	time_t now = time(NULL);
+	char time_str[64];
+	ctime_s(time_str, sizeof(time_str), &now);
+
+	al_fprintf(file, "// Auto-generated file. Do not edit.\n");
+	al_fprintf(file, "// Generated on: %s\n\n", time_str);
+	al_fprintf(file, "#include <stdint.h>\n\n");
 	al_fprintf(file, "#define %s_SIZE %zu\n\n", name, size);
 	al_fprintf(file, "uint8_t %s[%s_SIZE] =\n{\n", name, name);
 

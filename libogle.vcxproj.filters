@@ -87,6 +87,27 @@
     <ClInclude Include="include\libogle\o_vertex.h">
       <Filter>Header Files\Library Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\libogle\o_index_buffer.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_vertex_buffer.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_stringview.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_string.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_char.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_rect.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_text.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\o_atlas.c">
@@ -149,13 +170,40 @@
     <ClCompile Include="src\o_mesh_save_h.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\o_mesh_load_obj.c">
+    <ClCompile Include="src\o_mesh_load_bin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_vertex.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_vertex_buffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_index_buffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_mesh_save_bin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_stringview.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_string.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_char.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_mesh_load_obj.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_rect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_text.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

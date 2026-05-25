@@ -1,4 +1,5 @@
 #include "libogle/o_common.h"
+#include "libogle/o_log.h"
 #include "libogle/o_color.h"
 #include "libogle/o_vector3.h"
 #include "libogle/o_vertex.h"
