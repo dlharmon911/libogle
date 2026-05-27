@@ -23,6 +23,7 @@
 #include "libogle/o_plane.h"
 #include "libogle/o_transform.h"
 #include "libogle/o_rect.h"
+#include "libogle/o_circle.h"
 #include "libogle/o_text.h"
 
 #endif // !_HEADER_GUARD_OGLE_H_

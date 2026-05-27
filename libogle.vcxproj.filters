@@ -108,6 +108,12 @@
     <ClInclude Include="include\libogle\o_text.h">
       <Filter>Header Files\Library Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\libogle\o_circle.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_config.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\o_atlas.c">
@@ -204,6 +210,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_text.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_circle.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_config.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
