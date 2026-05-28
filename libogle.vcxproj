@@ -167,6 +167,7 @@
     <ClInclude Include="include\libogle\o_index_buffer.h" />
     <ClInclude Include="include\libogle\o_input.h" />
     <ClInclude Include="include\libogle\o_light.h" />
+    <ClInclude Include="include\libogle\o_literal.h" />
     <ClInclude Include="include\libogle\o_log.h" />
     <ClInclude Include="include\libogle\o_material.h" />
     <ClInclude Include="include\libogle\o_math.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="include\libogle\o_plane.h" />
     <ClInclude Include="include\libogle\o_ray.h" />
     <ClInclude Include="include\libogle\o_rect.h" />
+    <ClInclude Include="include\libogle\o_screen.h" />
     <ClInclude Include="include\libogle\o_string.h" />
     <ClInclude Include="include\libogle\o_stringview.h" />
     <ClInclude Include="include\libogle\o_text.h" />
@@ -198,6 +200,7 @@
     <ClCompile Include="src\o_index_buffer.c" />
     <ClCompile Include="src\o_input.c" />
     <ClCompile Include="src\o_light.c" />
+    <ClCompile Include="src\o_literal.c" />
     <ClCompile Include="src\o_log.c" />
     <ClCompile Include="src\o_material.c" />
     <ClCompile Include="src\o_math.c" />

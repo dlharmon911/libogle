@@ -17,7 +17,7 @@ bool ogle_config_get_bool(ALLEGRO_CONFIG* config, const char* section, const cha
 		return default_value;
 	}
 
-	return ogle_string_to_bool(value_str, default_value);
+	return ogle_string_to_bool(value_str);
 }
 
 int8_t ogle_config_get_int8(ALLEGRO_CONFIG* config, const char* section, const char* key, int8_t default_value)
@@ -31,7 +31,7 @@ int8_t ogle_config_get_int8(ALLEGRO_CONFIG* config, const char* section, const c
 	{
 		return default_value;
 	}
-	return ogle_string_to_int8(value_str, default_value);
+	return ogle_string_to_int8(value_str);
 }
 
 int16_t ogle_config_get_int16(ALLEGRO_CONFIG* config, const char* section, const char* key, int16_t default_value)
@@ -45,7 +45,7 @@ int16_t ogle_config_get_int16(ALLEGRO_CONFIG* config, const char* section, const
 	{
 		return default_value;
 	}
-	return ogle_string_to_int16(value_str, default_value);
+	return ogle_string_to_int16(value_str);
 }
 
 int32_t ogle_config_get_int32(ALLEGRO_CONFIG* config, const char* section, const char* key, int32_t default_value)
@@ -59,7 +59,7 @@ int32_t ogle_config_get_int32(ALLEGRO_CONFIG* config, const char* section, const
 	{
 		return default_value;
 	}
-	return ogle_string_to_int32(value_str, default_value);
+	return ogle_string_to_int32(value_str);
 }
 
 int64_t ogle_config_get_int64(ALLEGRO_CONFIG* config, const char* section, const char* key, int64_t default_value)
@@ -73,7 +73,7 @@ int64_t ogle_config_get_int64(ALLEGRO_CONFIG* config, const char* section, const
 	{
 		return default_value;
 	}
-	return ogle_string_to_int64(value_str, default_value);
+	return ogle_string_to_int64(value_str);
 }
 
 uint8_t ogle_config_get_uint8(ALLEGRO_CONFIG* config, const char* section, const char* key, uint8_t default_value)
@@ -87,7 +87,7 @@ uint8_t ogle_config_get_uint8(ALLEGRO_CONFIG* config, const char* section, const
 	{
 		return default_value;
 	}
-	return ogle_string_to_uint8(value_str, default_value);
+	return ogle_string_to_uint8(value_str);
 }
 
 uint16_t ogle_config_get_uint16(ALLEGRO_CONFIG* config, const char* section, const char* key, uint16_t default_value)
@@ -101,7 +101,7 @@ uint16_t ogle_config_get_uint16(ALLEGRO_CONFIG* config, const char* section, con
 	{
 		return default_value;
 	}
-	return ogle_string_to_uint16(value_str, default_value);
+	return ogle_string_to_uint16(value_str);
 }
 
 uint32_t ogle_config_get_uint32(ALLEGRO_CONFIG* config, const char* section, const char* key, uint32_t default_value)
@@ -115,7 +115,7 @@ uint32_t ogle_config_get_uint32(ALLEGRO_CONFIG* config, const char* section, con
 	{
 		return default_value;
 	}
-	return ogle_string_to_uint32(value_str, default_value);
+	return ogle_string_to_uint32(value_str);
 }
 
 uint64_t ogle_config_get_uint64(ALLEGRO_CONFIG* config, const char* section, const char* key, uint64_t default_value)
@@ -129,7 +129,7 @@ uint64_t ogle_config_get_uint64(ALLEGRO_CONFIG* config, const char* section, con
 	{
 		return default_value;
 	}
-	return ogle_string_to_uint64(value_str, default_value);
+	return ogle_string_to_uint64(value_str);
 }
 
 float ogle_config_get_float(ALLEGRO_CONFIG* config, const char* section, const char* key, float default_value)
@@ -143,7 +143,7 @@ float ogle_config_get_float(ALLEGRO_CONFIG* config, const char* section, const c
 	{
 		return default_value;
 	}
-	return ogle_string_to_float(value_str, default_value);
+	return ogle_string_to_float(value_str);
 }
 
 double ogle_config_get_double(ALLEGRO_CONFIG* config, const char* section, const char* key, double default_value)
@@ -157,7 +157,7 @@ double ogle_config_get_double(ALLEGRO_CONFIG* config, const char* section, const
 	{
 		return default_value;
 	}
-	return ogle_string_to_double(value_str, default_value);
+	return ogle_string_to_double(value_str);
 }
 
 const char* ogle_config_get_string(ALLEGRO_CONFIG* config, const char* section, const char* key, const char* default_value)
@@ -190,7 +190,7 @@ bool ogle_config_get_bool_const(const ALLEGRO_CONFIG* config, const char* sectio
 		return false;
 	}
 	
-	return ogle_string_to_bool(value_str, false);
+	return ogle_string_to_bool(value_str);
 }
 
 int8_t ogle_config_get_int8_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -204,7 +204,7 @@ int8_t ogle_config_get_int8_const(const ALLEGRO_CONFIG* config, const char* sect
 	{
 		return 0;
 	}
-	return ogle_string_to_int8(value_str, 0);
+	return ogle_string_to_int8(value_str);
 }
 int16_t ogle_config_get_int16_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
 {
@@ -217,7 +217,7 @@ int16_t ogle_config_get_int16_const(const ALLEGRO_CONFIG* config, const char* se
 	{
 		return 0;
 	}
-	return ogle_string_to_int16(value_str, 0);
+	return ogle_string_to_int16(value_str);
 }
 
 int32_t ogle_config_get_int32_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -231,7 +231,7 @@ int32_t ogle_config_get_int32_const(const ALLEGRO_CONFIG* config, const char* se
 	{
 		return 0;
 	}
-	return ogle_string_to_int32(value_str, 0);
+	return ogle_string_to_int32(value_str);
 }
 
 int64_t ogle_config_get_int64_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -245,7 +245,7 @@ int64_t ogle_config_get_int64_const(const ALLEGRO_CONFIG* config, const char* se
 	{
 		return 0;
 	}
-	return ogle_string_to_int64(value_str, 0);
+	return ogle_string_to_int64(value_str);
 }
 
 uint8_t ogle_config_get_uint8_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -259,7 +259,7 @@ uint8_t ogle_config_get_uint8_const(const ALLEGRO_CONFIG* config, const char* se
 	{
 		return 0;
 	}
-	return ogle_string_to_uint8(value_str, 0);
+	return ogle_string_to_uint8(value_str);
 }
 
 uint16_t ogle_config_get_uint16_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -273,7 +273,7 @@ uint16_t ogle_config_get_uint16_const(const ALLEGRO_CONFIG* config, const char* 
 	{
 		return 0;
 	}
-	return ogle_string_to_uint16(value_str, 0);
+	return ogle_string_to_uint16(value_str);
 }
 
 uint32_t ogle_config_get_uint32_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -287,7 +287,7 @@ uint32_t ogle_config_get_uint32_const(const ALLEGRO_CONFIG* config, const char* 
 	{
 		return 0;
 	}
-	return ogle_string_to_uint32(value_str, 0);
+	return ogle_string_to_uint32(value_str);
 }
 
 uint64_t ogle_config_get_uint64_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -301,7 +301,7 @@ uint64_t ogle_config_get_uint64_const(const ALLEGRO_CONFIG* config, const char* 
 	{
 		return 0;
 	}
-	return ogle_string_to_uint64(value_str, 0);
+	return ogle_string_to_uint64(value_str);
 }
 
 float ogle_config_get_float_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -315,7 +315,7 @@ float ogle_config_get_float_const(const ALLEGRO_CONFIG* config, const char* sect
 	{
 		return 0;
 	}
-	return ogle_string_to_float(value_str, 0);
+	return ogle_string_to_float(value_str);
 }
 
 double ogle_config_get_double_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)
@@ -329,7 +329,7 @@ double ogle_config_get_double_const(const ALLEGRO_CONFIG* config, const char* se
 	{
 		return 0;
 	}
-	return ogle_string_to_double(value_str, 0);
+	return ogle_string_to_double(value_str);
 }
 
 const char* ogle_config_get_string_const(const ALLEGRO_CONFIG* config, const char* section, const char* key)

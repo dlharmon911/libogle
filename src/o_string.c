@@ -86,7 +86,7 @@ bool ogle_string_to_bool(const char* str)
 		return false;
 	}
 
-	size_t len = ogle_string_length(str);
+	int32_t len = ogle_string_length(str);
 
 	if (len == 4 && ogle_string_icompare(str, len, OGLE_STRING_TRUE, 4) == 0)
 	{
