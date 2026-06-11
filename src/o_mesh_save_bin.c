@@ -17,29 +17,29 @@ static int32_t _ogle_mesh_data_write_bin_vertex(ALLEGRO_FILE* file, const o_vert
 		return -1;
 	}
 
-	if (ogle_file_write_float_array(file, &vertex->m_position.m_x, sizeof(vertex->m_position) / sizeof(float)) < 0)
-	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex position to file");
-		return -1;
-	}
+	//if (ogle_file_write_float_array(file, &vertex->m_position.m_x, sizeof(vertex->m_position) / sizeof(float)) < 0)
+	//{
+	//	OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex position to file");
+	//	return -1;
+	//}
 
-	if (ogle_file_write_float_array(file, &vertex->m_uv.m_x, sizeof(vertex->m_uv) / sizeof(float)) < 0)
-	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex UV coordinates to file");
-		return -1;
-	}
+	//if (ogle_file_write_float_array(file, &vertex->m_uv.m_x, sizeof(vertex->m_uv) / sizeof(float)) < 0)
+	//{
+	//	OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex UV coordinates to file");
+	//	return -1;
+	//}
 
-	if (ogle_file_write_float_array(file, &vertex->m_normal.m_x, sizeof(vertex->m_normal) / sizeof(float)) < 0)
-	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex normal to file");
-		return -1;
-	}
+	//if (ogle_file_write_float_array(file, &vertex->m_normal.m_x, sizeof(vertex->m_normal) / sizeof(float)) < 0)
+	//{
+	//	OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex normal to file");
+	//	return -1;
+	//}
 
-	if (ogle_file_write_float_array(file, &vertex->m_color.r, sizeof(vertex->m_color) / sizeof(float)) < 0)
-	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex color to file");
-		return -1;
-	}
+	//if (ogle_file_write_float_array(file, &vertex->m_color.r, sizeof(vertex->m_color) / sizeof(float)) < 0)
+	//{
+	//	OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Failed to write vertex color to file");
+	//	return -1;
+	//}
 
 	return 0;
 }

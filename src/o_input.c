@@ -82,8 +82,18 @@ bool ogle_input_keyboard_button_was_pressed(const o_input_keyboard_t* keyboard, 
 		return false;
 	}
 
-	return (keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) != 0 &&
-		(keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_PRESSED) != 0;
+	return (keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) &&
+		(keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_PRESSED);
+}
+
+bool ogle_input_keyboard_button_was_released(const o_input_keyboard_t* keyboard, int32_t index)
+{
+	if (keyboard == NULL || index < 0 || index >= OGLE_INPUT_KEYBOARD_MAX_BUTTONS)
+	{
+		return false;
+	}
+	return (keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) &&
+		!(keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_PRESSED);
 }
 
 bool ogle_input_keyboard_button_was_changed(const o_input_keyboard_t* keyboard, int32_t index)
@@ -93,7 +103,7 @@ bool ogle_input_keyboard_button_was_changed(const o_input_keyboard_t* keyboard, 
 		return false;
 	}
 
-	return (keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) != 0;
+	return (keyboard->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED);
 }
 
 bool ogle_input_keyboard_was_changed(const o_input_keyboard_t* keyboard)
@@ -110,7 +120,7 @@ void ogle_input_keyboard_reset(o_input_keyboard_t* keyboard)
 {
 	for (int32_t i = 0; i < OGLE_INPUT_KEYBOARD_MAX_BUTTONS; ++i)
 	{
-		keyboard->m_button[i] &= ~OGLE_INPUT_BUTTON_FLAG_CHANGED;
+		keyboard->m_button[i] &= OGLE_INPUT_BUTTON_FLAG_PRESSED;
 	}
 
 	keyboard->m_changed = false;
@@ -133,8 +143,19 @@ bool ogle_input_mouse_button_was_pressed(const o_input_mouse_t* mouse, int32_t i
 		return false;
 	}
 
-	return (mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) != 0 &&
-		(mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_PRESSED) != 0;
+	return (mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) &&
+		(mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_PRESSED);
+}
+
+bool ogle_input_mouse_button_was_released(const o_input_mouse_t* mouse, int32_t index)
+{
+	if (mouse == NULL || index < 0 || index >= OGLE_INPUT_MOUSE_MAX_BUTTONS)
+	{
+		return false;
+	}
+
+	return (mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) &&
+		!(mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_PRESSED);
 }
 
 bool ogle_input_mouse_button_was_changed(const o_input_mouse_t* mouse, int32_t index)
@@ -144,7 +165,7 @@ bool ogle_input_mouse_button_was_changed(const o_input_mouse_t* mouse, int32_t i
 		return false;
 	}
 
-	return (mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED) != 0;
+	return (mouse->m_button[index] & OGLE_INPUT_BUTTON_FLAG_CHANGED);
 }
 
 bool ogle_input_mouse_was_changed(const o_input_mouse_t* mouse)
@@ -161,7 +182,7 @@ void ogle_input_mouse_reset(o_input_mouse_t* mouse)
 {
 	for (int32_t i = 0; i < OGLE_INPUT_MOUSE_MAX_BUTTONS; ++i)
 	{
-		mouse->m_button[i] &= ~OGLE_INPUT_BUTTON_FLAG_CHANGED;
+		mouse->m_button[i] &= OGLE_INPUT_BUTTON_FLAG_PRESSED;
 	}
 
 	mouse->m_changed = false;

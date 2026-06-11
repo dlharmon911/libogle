@@ -26,5 +26,8 @@
 #include "libogle/o_circle.h"
 #include "libogle/o_text.h"
 #include "libogle/o_screen.h"
+#include "libogle/o_string.h"
+#include "libogle/o_stringview.h"
+
 
 #endif // !_HEADER_GUARD_OGLE_H_
