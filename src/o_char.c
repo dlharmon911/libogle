@@ -84,7 +84,7 @@ bool ogle_char_is_alphanumeric(int32_t c)
 
 bool ogle_char_is_whitespace(int32_t c)
 {
-	int32_t length = ogle_string_length(OGLE_WHITESPACE_CHARS);
+	size_t length = ogle_string_length(OGLE_WHITESPACE_CHARS);
 
 	return ogle_string_is_inside(OGLE_WHITESPACE_CHARS, length, c);
 }

@@ -33,14 +33,15 @@ void ogle_log_print_float(float value);
 void ogle_log_print_double(double value);
 void ogle_log_print_long_double(long double value);
 void ogle_log_print_char(char c);
+void ogle_log_print_char_n(size_t n, char c);
 void ogle_log_print_vargs(const char* const format, va_list va_arg_list);
 void ogle_log_printf(const char* const format, ...);
-void ogle_log_level(int32_t level, const char* filename, int32_t line_number, const char* format, ...);
+void ogle_log_level(int32_t level, const char* filename, int32_t polygon_number, const char* format, ...);
 
 #ifdef _DEBUG
-#define OGLE_DO_LOG(level, format, ...) ogle_log_level(level, __FILE__, __LINE__, format, __VA_ARGS__)
+#define ogle_do_log(level, format, ...) ogle_log_level(level, __FILE__, __LINE__, format, __VA_ARGS__)
 #else
-#define OGLE_DO_LOG(format, ...)
+#define ogle_do_log(format, ...)
 #endif
 
 

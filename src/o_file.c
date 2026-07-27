@@ -4,6 +4,42 @@
 #include "libogle/o_literal.h"
 #include "libogle/o_file.h"
 
+size_t ogle_file_size(ALLEGRO_FILE* file)
+{
+	int64_t current_position = 0;
+	int64_t end_position = 0;
+
+	if (!file)
+	{
+		return 0;
+	}
+
+	current_position = al_ftell(file);
+
+	if (current_position < 0)
+	{
+		return 0;
+	}
+
+	if (!al_fseek(file, 0, ALLEGRO_SEEK_END))
+	{
+		return 0;
+	}
+
+	end_position = al_ftell(file);
+
+	if (end_position < 0)
+	{
+		return 0;
+	}
+
+	if (!al_fseek(file, current_position, ALLEGRO_SEEK_SET))
+	{
+		return 0;
+	}
+
+	return (size_t)end_position;
+}
 
 int32_t ogle_file_write_bool(ALLEGRO_FILE* file, bool value)
 {

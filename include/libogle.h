@@ -1,12 +1,11 @@
 #ifndef _HEADER_GUARD_OGLE_H_
 #define _HEADER_GUARD_OGLE_H_
 
-#include <stdint.h>
-#include <stdbool.h>
-
 #include "libogle/o_common.h"
 #include "libogle/o_log.h"
+#include "libogle/o_config.h"
 #include "libogle/o_math.h"
+#include "libogle/o_darray.h"
 #include "libogle/o_vector2.h"
 #include "libogle/o_vector3.h"
 #include "libogle/o_vector4.h"
@@ -15,6 +14,7 @@
 #include "libogle/o_input.h"
 #include "libogle/o_color.h"
 #include "libogle/o_file.h"
+#include "libogle/o_utilities.h"
 #include "libogle/o_mesh.h"
 #include "libogle/o_light.h"
 #include "libogle/o_object.h"
@@ -23,11 +23,20 @@
 #include "libogle/o_plane.h"
 #include "libogle/o_transform.h"
 #include "libogle/o_rect.h"
+#include "libogle/o_line.h"
 #include "libogle/o_circle.h"
 #include "libogle/o_text.h"
 #include "libogle/o_screen.h"
+#include "libogle/o_char.h"
 #include "libogle/o_string.h"
 #include "libogle/o_stringview.h"
+#include "libogle/o_font.h"
+#include "libogle/o_shader.h"
+#include "libogle/o_texture.h"
+#include "libogle/o_sample.h"
+#include "libogle/o_atlas.h"
+#include "libogle/o_memchunk.h"
+#include "libogle/o_collision_2d.h"
 
 
 #endif // !_HEADER_GUARD_OGLE_H_

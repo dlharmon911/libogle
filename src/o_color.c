@@ -30,7 +30,7 @@ o_color_t ogle_color_map_rgb_array_u8(const uint8_t* array)
 {
 	if (!array)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_map_rgb_array_u8");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_map_rgb_array_u8");
 		return OGLE_COLOR_BLACK;
 	}
 
@@ -41,7 +41,7 @@ void ogle_color_unmap_rgb_array_u8(o_color_t color, uint8_t* array)
 {
 	if (!array)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_unmap_rgb_array_u8");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_unmap_rgb_array_u8");
 		return;
 	}
 
@@ -52,7 +52,7 @@ o_color_t ogle_color_map_rgba_array_u8(const uint8_t* array)
 {
 	if (!array)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_map_rgba_array_u8");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_map_rgba_array_u8");
 		return OGLE_COLOR_BLACK;
 	}
 
@@ -63,7 +63,7 @@ void ogle_color_unmap_rgba_array_u8(o_color_t color, uint8_t* array)
 {
 	if (!array)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_unmap_rgba_array_u8");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Invalid argument(s) passed to ogle_color_unmap_rgba_array_u8");
 		return;
 	}
 

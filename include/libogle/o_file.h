@@ -4,6 +4,7 @@
 #include "libogle/o_common.h"
 #include "libogle/o_literal.h"
 
+size_t ogle_file_size(ALLEGRO_FILE* file);
 int32_t ogle_file_write_bool(ALLEGRO_FILE* file, bool value);
 int32_t ogle_file_write_bool_array(ALLEGRO_FILE* file, const bool* array, size_t size);
 int32_t ogle_file_write_i8(ALLEGRO_FILE* file, int8_t value);

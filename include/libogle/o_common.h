@@ -9,6 +9,7 @@
 #include <allegro5/allegro_memfile.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_ttf.h>
+#include <physfs.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h>

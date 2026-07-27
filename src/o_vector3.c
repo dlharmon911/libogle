@@ -122,7 +122,7 @@ o_vector3_t ogle_vector3_div_ff(o_vector3_t vector, float f)
 {
 	if (ogle_math_is_zero_f(f))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
 		return vector;
 	}
 
@@ -133,7 +133,7 @@ o_vector3_t ogle_vector3_div_f(o_vector3_t vector, float x, float y, float z)
 {
 	if (ogle_math_is_zero_f(x) || ogle_math_is_zero_f(y))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
 		return vector;
 	}
 
@@ -144,7 +144,7 @@ o_vector3_t ogle_vector3_div(o_vector3_t vector1, o_vector3_t vector2)
 {
 	if (ogle_math_is_zero_f(vector2.m_x) || ogle_math_is_zero_f(vector2.m_y) || ogle_math_is_zero_f(vector2.m_z))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
 		return vector1;
 	}
 
@@ -162,7 +162,7 @@ o_vector3_t ogle_vector3_normalize(o_vector3_t vector)
 
 	if (ogle_math_is_zero_f(length))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to normalize a zero-length vector.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to normalize a zero-length vector.\n");
 		return vector;
 	}
 
@@ -183,7 +183,11 @@ o_vector3_t ogle_vector3_rotate_xy(o_vector3_t vector, float angle)
 {
 	float cos_angle = cosf(angle);
 	float sin_angle = sinf(angle);
-	return (o_vector3_t) { vector.m_x* cos_angle - vector.m_y * sin_angle, vector.m_x* sin_angle + vector.m_y * cos_angle, vector.m_z }; {}
+
+	float x = vector.m_x * cos_angle - vector.m_y * sin_angle;
+	float y = vector.m_x * sin_angle + vector.m_y * cos_angle;
+
+	return (o_vector3_t) { x, y, vector.m_z }; {}
 }
 
 o_vector3_t ogle_vector3_rotate_xz(o_vector3_t vector, float angle)
@@ -191,14 +195,21 @@ o_vector3_t ogle_vector3_rotate_xz(o_vector3_t vector, float angle)
 	float cos_angle = cosf(angle);
 	float sin_angle = sinf(angle);
 
-	return (o_vector3_t) { vector.m_x* cos_angle - vector.m_z * sin_angle, vector.m_y, vector.m_x* sin_angle + vector.m_z * cos_angle };
+	float x = vector.m_x * cos_angle - vector.m_z * sin_angle;
+	float z = vector.m_x * sin_angle + vector.m_z * cos_angle;
+
+	return (o_vector3_t) { x, vector.m_y, z };
 }
 
 o_vector3_t ogle_vector3_rotate_yz(o_vector3_t vector, float angle)
 {
 	float cos_angle = cosf(angle);
 	float sin_angle = sinf(angle);
-	return (o_vector3_t) { vector.m_x, vector.m_y* cos_angle - vector.m_z * sin_angle, vector.m_y* sin_angle + vector.m_z * cos_angle };
+	
+	float y = vector.m_y * cos_angle - vector.m_z * sin_angle;
+	float z = vector.m_y * sin_angle + vector.m_z * cos_angle;
+
+	return (o_vector3_t) { vector.m_x, y, z };
 }
 
 o_vector3_t ogle_vector3_difference(o_vector3_t vector, o_vector3_t other)
@@ -222,15 +233,35 @@ void ogle_vector3_set_shader(const char* var_name, o_vector3_t vector)
 
 	if (!shader)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "No shader is currently active. Cannot set shader variable '%s'.\n", var_name);
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "No shader is currently active. Cannot set shader variable '%s'.\n", var_name);
 		return;
 	}
 
 	if (!var_name)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Variable name is NULL.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Variable name is NULL.\n");
 		return;
 	}
 
 	al_set_shader_float_vector(var_name, 3, &vector.m_x, 1);
+}
+
+o_vector3_t ogle_vector3_rotate_axis(o_vector3_t v, o_vector3_t axis, float angle_deg)
+{
+	float theta = angle_deg * OGLE_MATH_DEG_TO_RAD_RATIO;
+	o_vector3_t k = ogle_vector3_normalize(axis);
+	float cos_t = cosf(theta);
+	float sin_t = sinf(theta);
+
+	o_vector3_t k_cross_v = ogle_vector3_cross(k, v);
+	float k_dot_v = ogle_vector3_dot(k, v);
+
+	o_vector3_t v_rot =
+	{
+		.m_x = (v.m_x * cos_t) + (k_cross_v.m_x * sin_t) + (k.m_x * k_dot_v * (1.0f - cos_t)),
+		.m_y = (v.m_y * cos_t) + (k_cross_v.m_y * sin_t) + (k.m_y * k_dot_v * (1.0f - cos_t)),
+		.m_z = (v.m_z * cos_t) + (k_cross_v.m_z * sin_t) + (k.m_z * k_dot_v * (1.0f - cos_t))
+	};
+
+	return v_rot;
 }

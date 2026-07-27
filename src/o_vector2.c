@@ -53,6 +53,11 @@ float ogle_vector2_dot(o_vector2_t vector1, o_vector2_t vector2)
 	return vector1.m_x * vector2.m_x + vector1.m_y * vector2.m_y;
 }
 
+float ogle_vector2_cross(o_vector2_t vector1, o_vector2_t vector2)
+{
+	return vector1.m_x * vector2.m_y - vector1.m_y * vector2.m_x;
+}
+
 o_vector2_t ogle_vector2_add_ff(o_vector2_t vector, float f)
 {
 	return (o_vector2_t) { vector.m_x + f, vector.m_y + f };
@@ -102,7 +107,7 @@ o_vector2_t ogle_vector2_div_ff(o_vector2_t vector, float f)
 {
 	if (ogle_math_is_zero_f(f))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
 		return vector;
 	}
 
@@ -113,7 +118,7 @@ o_vector2_t ogle_vector2_div_f(o_vector2_t vector, float x, float y)
 {
 	if (ogle_math_is_zero_f(x) || ogle_math_is_zero_f(y))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
 		return vector;
 	}
 
@@ -124,7 +129,7 @@ o_vector2_t ogle_vector2_div(o_vector2_t vector1, o_vector2_t vector2)
 {
 	if (ogle_math_is_zero_f(vector2.m_x) || ogle_math_is_zero_f(vector2.m_y))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to divide vector by zero.\n");
 		return vector1;
 	}
 
@@ -142,7 +147,7 @@ o_vector2_t ogle_vector2_normalize(o_vector2_t vector)
 
 	if (ogle_math_is_zero_f(length))
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "Attempted to normalize a zero-length vector.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "Attempted to normalize a zero-length vector.\n");
 		return vector;
 	}
 
@@ -193,13 +198,13 @@ void ogle_vector2_set_shader(const char* var_name, o_vector2_t vector)
 
 	if (!shader)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_WARNING, "No shader is currently active. Cannot set shader variable '%s'.\n", var_name);
+		ogle_do_log(OGLE_LOG_LEVEL_WARNING, "No shader is currently active. Cannot set shader variable '%s'.\n", var_name);
 		return;
 	}
 
 	if (!var_name)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Variable name is NULL.\n");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Variable name is NULL.\n");
 		return;
 	}
 

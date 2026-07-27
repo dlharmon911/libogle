@@ -17,7 +17,7 @@ typedef struct o_object_metadata_tag_t
 
 static o_object_allocation_data_t g_object_allocation_data = { 0, 0, 0, 0 };
 
-static void* ogle_alloc(size_t size)
+void* ogle_malloc(size_t size)
 {
 	void* memory = NULL;
 	o_object_metadata_t* metadata = NULL;
@@ -34,11 +34,36 @@ static void* ogle_alloc(size_t size)
 	metadata->m_size = size;
 	g_object_allocation_data.m_allocated += size;
 	g_object_allocation_data.m_total_allocations += 1;
-	OGLE_DO_LOG(OGLE_LOG_LEVEL_INFO, "Manually allocated %zu bytes for an object", size);
+	ogle_do_log(OGLE_LOG_LEVEL_INFO, "Manually allocated %zu bytes for an object", size);
 	return (void*)(metadata + 1);
 }
 
-static void ogle_free(void* object)
+void* ogle_realloc(void* ptr, size_t size)
+{
+	if (!ptr)
+	{
+		return ogle_malloc(size);
+	}
+	if (0 == size)
+	{
+		ogle_free(ptr);
+		return NULL;
+	}
+	o_object_metadata_t* metadata = (o_object_metadata_t*)ptr - 1;
+	size_t old_size = metadata->m_size;
+	void* new_memory = al_realloc(metadata, sizeof(o_object_metadata_t) + size);
+	if (!new_memory)
+	{
+		return NULL;
+	}
+	o_object_metadata_t* new_metadata = (o_object_metadata_t*)new_memory;
+	new_metadata->m_size = size;
+	g_object_allocation_data.m_allocated += (size - old_size);
+	ogle_do_log(OGLE_LOG_LEVEL_INFO, "Manually reallocated object from %zu bytes to %zu bytes", old_size, size);
+	return (void*)(new_metadata + 1);
+}
+
+void ogle_free(void* object)
 {
 	o_object_metadata_t* metadata = NULL;
 	if (!object)
@@ -48,7 +73,7 @@ static void ogle_free(void* object)
 	metadata = (o_object_metadata_t*)object - 1;
 	g_object_allocation_data.m_freed += metadata->m_size;
 	g_object_allocation_data.m_total_deallocations += 1;
-	OGLE_DO_LOG(OGLE_LOG_LEVEL_INFO, "Manually freed %zu bytes from an object", metadata->m_size);
+	ogle_do_log(OGLE_LOG_LEVEL_INFO, "Manually freed %zu bytes from an object", metadata->m_size);
 	al_free(metadata);
 }
 
@@ -81,7 +106,7 @@ void* ogle_object_create(size_t size, o_object_initializer_func_t initializer, v
 		return NULL;
 	}
 
-	object = ogle_alloc(size);
+	object = ogle_malloc(size);
 
 	if (!object)
 	{

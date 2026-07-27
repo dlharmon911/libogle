@@ -35,7 +35,11 @@ typedef struct o_input_mouse_t
 	bool m_changed;
 } o_input_mouse_t;
 
-typedef struct o_input_t o_input_t;
+typedef struct o_input_t
+{
+	o_input_keyboard_t m_keyboard;
+	o_input_mouse_t m_mouse;
+} o_input_t;
 
 int32_t ogle_input_initializer(o_input_t* input, void * data);
 void ogle_input_uninitializer(o_input_t* input);

@@ -9,7 +9,7 @@ static int32_t ogle_vertex_buffer_initializer_zero(o_vertex_t* vertices, int32_t
 {
 	if (!vertices)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Vertex buffer pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Vertex buffer pointer is NULL");
 		return -1;
 	}
 
@@ -25,13 +25,13 @@ static int32_t ogle_vertex_buffer_initializer_copy(o_vertex_t* vertices, int32_t
 {
 	if (!vertices)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Vertex buffer pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Vertex buffer pointer is NULL");
 		return -1;
 	}
 
 	if (!data)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Vertex buffer initializer data pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Vertex buffer initializer data pointer is NULL");
 		return -1;
 	}
 
@@ -47,13 +47,13 @@ int32_t ogle_vertex_buffer_initializer(o_vertex_t* vertices, void* data)
 {
 	if (!vertices)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Vertex buffer pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Vertex buffer pointer is NULL");
 		return -1;
 	}
 
 	if (!data)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Vertex buffer initializer data pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Vertex buffer initializer data pointer is NULL");
 		return -1;
 	}
 
@@ -62,7 +62,7 @@ int32_t ogle_vertex_buffer_initializer(o_vertex_t* vertices, void* data)
 
 	if (count <= 0)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Vertex count must be greater than zero");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Vertex count must be greater than zero");
 		return -1;
 	}
 

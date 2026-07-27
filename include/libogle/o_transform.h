@@ -10,13 +10,6 @@
 
 typedef ALLEGRO_TRANSFORM o_transform_t;
 
-typedef struct o_world_transform_tag_t
-{
-	o_transform_t m_projection;
-	o_transform_t m_view;
-	o_transform_t m_model;
-} o_world_transform_t;
-
 void ogle_transform_use(const o_transform_t* trans);
 void ogle_transform_use_projection(const o_transform_t* trans);
 void ogle_transform_copy(o_transform_t* dest, const o_transform_t* src);

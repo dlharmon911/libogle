@@ -185,6 +185,19 @@ void ogle_log_print_char(char c)
 	ogle_log_printf("%c", c);
 }
 
+void ogle_log_print_char_n(size_t n, char c)
+{
+	if (n == 0)
+	{
+		return;
+	}
+
+	for (size_t i = 0; i < n; ++i)
+	{
+		ogle_log_print_char(c);
+	}
+}
+
 #ifdef _MSC_VER
 static size_t ogle_log_get_format_length(const char* format, va_list ap)
 {
@@ -258,7 +271,7 @@ void ogle_log_printf(const char* const format, ...)
 	va_end(va_arg_list);
 }
 
-void ogle_log_level(int32_t level, const char* filename, int32_t line_number, const char* format, ...)
+void ogle_log_level(int32_t level, const char* filename, int32_t polygon_number, const char* format, ...)
 {
 	static va_list va_arg_list;
 	if (!format)
@@ -276,12 +289,12 @@ void ogle_log_level(int32_t level, const char* filename, int32_t line_number, co
 	case OGLE_LOG_LEVEL_ERROR:
 		ogle_log_printf("Error: ");
 		ogle_log_print_vargs(format, va_arg_list);
-		ogle_log_printf("\nFile: %s\nLine: %d\n", filename, line_number);
+		ogle_log_printf("\nFile: %s\nLine: %d\n", filename, polygon_number);
 		break;
 	case OGLE_LOG_LEVEL_WARNING:
 		ogle_log_printf("Warning: ");
 		ogle_log_print_vargs(format, va_arg_list);
-		ogle_log_printf("\nFile: %s\nLine: %d\n", filename, line_number);
+		ogle_log_printf("\nFile: %s\nLine: %d\n", filename, polygon_number);
 		break;
 	default:
 		break;

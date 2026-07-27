@@ -47,5 +47,6 @@ o_vector3_t ogle_vector3_difference(o_vector3_t vector, o_vector3_t other);
 o_vector3_t ogle_vector3_abs(o_vector3_t vector);
 ALLEGRO_PRIM_STORAGE ogle_vector3_storage_type(void);
 void ogle_vector3_set_shader(const char* var_name, o_vector3_t vector);
+o_vector3_t ogle_vector3_rotate_axis(o_vector3_t v, o_vector3_t axis, float angle_deg);
 
 #endif // _HEADER_GUARD_OGLE_VECTOR3_H_

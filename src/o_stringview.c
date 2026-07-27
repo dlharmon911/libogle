@@ -5,7 +5,7 @@
 
 static const char* OGLE_EMPTY_STRING = "";
 
-o_stringview_t ogle_stringview()
+o_stringview_t ogle_stringview_empty()
 {
 	o_stringview_t view =
 	{
@@ -17,7 +17,7 @@ o_stringview_t ogle_stringview()
 }
 
 
-o_stringview_t ogle_stringview_buffer(const char* str, int32_t length)
+o_stringview_t ogle_stringview_buffer(const char* str, size_t length)
 {
 	if (str == NULL)
 	{
@@ -49,6 +49,11 @@ o_stringview_t ogle_stringview_cstr(const char* str)
 	return view;
 }
 
+bool ogle_stringview_is_empty(o_stringview_t view)
+{
+	return (NULL == view.m_data || view.m_length == 0);
+}
+
 const char* ogle_stringview_data(o_stringview_t view)
 {
 	if (view.m_data == NULL || view.m_length <= 0)
@@ -59,12 +64,12 @@ const char* ogle_stringview_data(o_stringview_t view)
 	return view.m_data;
 }
 
-int32_t ogle_stringview_length(o_stringview_t view)
+size_t ogle_stringview_length(o_stringview_t view)
 {
 	return view.m_length;
 }
 
-o_stringview_t ogle_stringview_ltrim_count(o_stringview_t view, int32_t count)
+o_stringview_t ogle_stringview_ltrim_count(o_stringview_t view, size_t count)
 {
 	if (count > view.m_length)
 	{
@@ -77,7 +82,7 @@ o_stringview_t ogle_stringview_ltrim_count(o_stringview_t view, int32_t count)
 	return view;
 }
 
-o_stringview_t ogle_stringview_rtrim_count(o_stringview_t view, int32_t count)
+o_stringview_t ogle_stringview_rtrim_count(o_stringview_t view, size_t count)
 {
 	if (count > view.m_length)
 	{
@@ -159,31 +164,31 @@ bool ogle_stringview_ends_with(o_stringview_t view, o_stringview_t suffix)
 
 bool ogle_stringview_cstr_equals_(o_stringview_t a, const char* b)
 {
-	int32_t blen = ogle_string_length(b);
+	size_t blen = ogle_string_length(b);
 	return ogle_string_equals(a.m_data, a.m_length, b, blen);
 }
 
 bool ogle_stringview_cstr_iequals_(o_stringview_t a, const char* b)
 {
-	int32_t blen = ogle_string_length(b);
+	size_t blen = ogle_string_length(b);
 	return ogle_string_iequals(a.m_data, a.m_length, b, blen);
 }
 
 int32_t ogle_stringview_cstr_compare_(o_stringview_t a, const char* b)
 {
-	int32_t blen = ogle_string_length(b);
+	size_t blen = ogle_string_length(b);
 	return ogle_string_compare(a.m_data, a.m_length, b, blen);
 }
 
 int32_t ogle_stringview_cstr_icompare_(o_stringview_t a, const char* b)
 {
-	int32_t blen = ogle_string_length(b);
+	size_t blen = ogle_string_length(b);
 	return ogle_string_icompare(a.m_data, a.m_length, b, blen);
 }
 
 bool ogle_stringview_cstr_starts_with(o_stringview_t view, const char* prefix)
 {
-	int32_t plen = ogle_string_length(prefix);
+	size_t plen = ogle_string_length(prefix);
 
 	if (plen > view.m_length)
 	{
@@ -195,7 +200,7 @@ bool ogle_stringview_cstr_starts_with(o_stringview_t view, const char* prefix)
 
 bool ogle_stringview_cstr_ends_with(o_stringview_t view, const char* suffix)
 {
-	int32_t slen = ogle_string_length(suffix);
+	size_t slen = ogle_string_length(suffix);
 
 	if (slen > view.m_length)
 	{
@@ -207,7 +212,7 @@ bool ogle_stringview_cstr_ends_with(o_stringview_t view, const char* suffix)
 
 o_stringview_t ogle_stringview_tokenize(o_stringview_t view, int32_t delimiter, o_stringview_t* out_token)
 {
-	int32_t i = 0;
+	size_t i = 0;
 
 	if (!out_token)
 	{
@@ -417,7 +422,7 @@ o_stringview_t ogle_stringview_tokenize_u64(o_stringview_t view, uint64_t* out_v
 	return view;
 }
 
-o_stringview_t ogle_stringview_file_read_line(ALLEGRO_FILE* file, char* buffer, int32_t buffer_size)
+o_stringview_t ogle_stringview_file_read_polygon(ALLEGRO_FILE* file, char* buffer, int32_t buffer_size)
 {
 	if (!file || !buffer || buffer_size <= 0)
 	{
@@ -434,4 +439,25 @@ o_stringview_t ogle_stringview_file_read_line(ALLEGRO_FILE* file, char* buffer, 
 	}
 
 	return (o_stringview_t) { buffer, ogle_string_length(buffer) };
+}
+
+ALLEGRO_USTR* ogle_stringview_to_ustr(o_stringview_t view)
+{
+	if (view.m_data == NULL || view.m_length <= 0)
+	{
+		return al_ustr_dup(al_ustr_empty_string());
+	}
+
+	return al_ustr_new_from_buffer(view.m_data, view.m_length);
+}
+
+o_stringview_t ogle_stringview_from_ustr(ALLEGRO_USTR* ustr)
+{
+	if (!ustr)
+	{
+		return (o_stringview_t) { OGLE_EMPTY_STRING, 0 };
+	}
+	const char* data = al_cstr(ustr);
+	size_t length = al_ustr_size(ustr);
+	return (o_stringview_t) { data, length };
 }

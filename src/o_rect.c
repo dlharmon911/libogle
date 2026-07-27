@@ -2,6 +2,7 @@
 #include "libogle/o_color.h"
 #include "libogle/o_vector2.h"
 #include "libogle/o_rect.h"
+#include "libogle/o_texture.h"
 
 void ogle_rect_draw_gradient(ALLEGRO_SHADER* shader, o_vector2_t pos, o_vector2_t size, o_color_t color_a, o_color_t color_b, int32_t direction)
 {
@@ -15,7 +16,7 @@ void ogle_rect_draw_gradient(ALLEGRO_SHADER* shader, o_vector2_t pos, o_vector2_
 		direction = 0;
 	}
 
-	ALLEGRO_BITMAP* target = al_get_target_bitmap();
+	o_texture_t* target = al_get_target_bitmap();
 	o_vector2_t resolution = { (float)al_get_bitmap_width(target), (float)al_get_bitmap_height(target) };
 
 	al_use_shader(shader);

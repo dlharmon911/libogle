@@ -6,7 +6,7 @@ static int32_t ogle_index_buffer_initializer_zero(int32_t* indices, int32_t coun
 {
 	if (!indices)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Index buffer pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Index buffer pointer is NULL");
 		return -1;
 	}
 
@@ -22,13 +22,13 @@ static int32_t ogle_index_buffer_initializer_copy(int32_t* indices, int32_t coun
 {
 	if (!indices)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Index buffer pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Index buffer pointer is NULL");
 		return -1;
 	}
 
 	if (!data)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Index buffer initializer data pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Index buffer initializer data pointer is NULL");
 		return -1;
 	}
 
@@ -44,13 +44,13 @@ int32_t ogle_index_buffer_initializer(int32_t* indices, void* data)
 {
 	if (!indices)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Index buffer pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Index buffer pointer is NULL");
 		return -1;
 	}
 
 	if (!data)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Index buffer initializer data pointer is NULL");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Index buffer initializer data pointer is NULL");
 		return -1;
 	}
 
@@ -59,7 +59,7 @@ int32_t ogle_index_buffer_initializer(int32_t* indices, void* data)
 
 	if (count <= 0)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Index count must be greater than zero");
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Index count must be greater than zero");
 		return -1;
 	}
 

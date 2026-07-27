@@ -120,6 +120,21 @@
     <ClInclude Include="include\libogle\o_screen.h">
       <Filter>Header Files\Library Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\libogle\o_shader.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_font.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_sample.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_texture.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_memchunk.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\o_atlas.c">
@@ -173,16 +188,7 @@
     <ClCompile Include="src\o_darray.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\o_mesh_save_obj.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\o_utilities.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\o_mesh_save_h.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\o_mesh_load_bin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_vertex.c">
@@ -197,9 +203,6 @@
     <ClCompile Include="src\o_index_buffer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\o_mesh_save_bin.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\o_stringview.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -207,9 +210,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_char.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\o_mesh_load_obj.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_rect.c">
@@ -225,6 +225,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_literal.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_font.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_texture.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_sample.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_shader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_memchunk.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

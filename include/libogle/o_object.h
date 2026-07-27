@@ -6,7 +6,8 @@
 typedef int32_t (*o_object_initializer_func_t)(void* object, void* data);
 typedef void (*o_object_cleanup_func_t)(void* object);
 
-void* ogle_alloc(size_t size);
+void* ogle_malloc(size_t size);
+void* ogle_realloc(void* ptr, size_t size);
 void ogle_free(void* object);
 size_t ogle_object_memory_allocated();
 size_t ogle_object_memory_freed();

@@ -19,6 +19,7 @@ float ogle_vector2_squared_length(o_vector2_t vector);
 float ogle_vector2_length(o_vector2_t vector);
 float ogle_vector2_distance(o_vector2_t vector1, o_vector2_t vector2);
 float ogle_vector2_dot(o_vector2_t vector1, o_vector2_t vector2);
+float ogle_vector2_cross(o_vector2_t vector1, o_vector2_t vector2);
 o_vector2_t ogle_vector2_add_ff(o_vector2_t vector, float f);
 o_vector2_t ogle_vector2_add_f(o_vector2_t vector, float x, float y);
 o_vector2_t ogle_vector2_add(o_vector2_t vector1, o_vector2_t vector2);

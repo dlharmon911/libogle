@@ -2,14 +2,14 @@
 #include "libogle/o_string.h"
 #include "libogle/o_char.h"
 
-bool ogle_string_is_inside(const char* str, int32_t len, int32_t c)
+bool ogle_string_is_inside(const char* str, size_t len, int32_t c)
 {
 	if (str == NULL)
 	{
 		return false;
 	}
 
-	for (int32_t i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 	{
 		if ((int32_t)str[i] == c)
 		{
@@ -20,14 +20,14 @@ bool ogle_string_is_inside(const char* str, int32_t len, int32_t c)
 	return false;
 }
 
-int32_t ogle_string_length(const char* str)
+size_t ogle_string_length(const char* str)
 {
 	if (str == NULL)
 	{
 		return 0;
 	}
 
-	int32_t length = 0;
+	size_t length = 0;
 	while (*str)
 	{
 		++length;
@@ -36,11 +36,11 @@ int32_t ogle_string_length(const char* str)
 	return length;
 }
 
-int32_t ogle_string_compare(const char* a, int32_t alen, const char* b, int32_t blen)
+int32_t ogle_string_compare(const char* a, size_t alen, const char* b, size_t blen)
 {
-	int32_t len = (alen < blen) ? alen : blen;
+	size_t len = (alen < blen) ? alen : blen;
 
-	for (int32_t i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 	{
 		int32_t cmp = ogle_char_compare((int32_t)a[i], (int32_t)b[i]);
 
@@ -53,11 +53,11 @@ int32_t ogle_string_compare(const char* a, int32_t alen, const char* b, int32_t 
 	return ogle_char_compare((int32_t)*a, (int32_t)*b);
 }
 
-int32_t ogle_string_icompare(const char* a, int32_t alen, const char* b, int32_t blen)
+int32_t ogle_string_icompare(const char* a, size_t alen, const char* b, size_t blen)
 {
-	int32_t len = (alen < blen) ? alen : blen;
+	size_t len = (alen < blen) ? alen : blen;
 
-	for (int32_t i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 	{
 		int32_t cmp = ogle_char_icompare((int32_t)a[i], (int32_t)b[i]);
 		if (cmp != 0)
@@ -69,12 +69,12 @@ int32_t ogle_string_icompare(const char* a, int32_t alen, const char* b, int32_t
 	return ogle_char_icompare((int32_t)a[alen - 1], (int32_t)b[blen - 1]);
 }
 
-bool ogle_string_equals(const char* a, int32_t alen, const char* b, int32_t blen)
+bool ogle_string_equals(const char* a, size_t alen, const char* b, size_t blen)
 {
 	return 0 == ogle_string_compare(a, alen, b, blen);
 }
 
-bool ogle_string_iequals(const char* a, int32_t alen, const char* b, int32_t blen)
+bool ogle_string_iequals(const char* a, size_t alen, const char* b, size_t blen)
 {
 	return 0 == ogle_string_icompare(a, alen, b, blen);
 }
@@ -86,7 +86,7 @@ bool ogle_string_to_bool(const char* str)
 		return false;
 	}
 
-	int32_t len = ogle_string_length(str);
+	size_t len = ogle_string_length(str);
 
 	if (len == 4 && ogle_string_icompare(str, len, OGLE_STRING_TRUE, 4) == 0)
 	{
@@ -259,15 +259,15 @@ double ogle_string_to_double(const char* str)
 	return value;
 }
 
-bool ogle_string_from_bool(char* buffer, int32_t buffer_size, bool value)
+bool ogle_string_from_bool(char* buffer, size_t buffer_size, bool value)
 {
 	const char* str = value ? OGLE_STRING_TRUE : OGLE_STRING_FALSE;
-	int32_t len = ogle_string_length(str);
+	size_t len = ogle_string_length(str);
 	if (buffer_size < len + 1)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < len; ++i)
+	for (size_t i = 0; i < len; ++i)
 	{
 		buffer[i] = str[i];
 	}
@@ -275,7 +275,7 @@ bool ogle_string_from_bool(char* buffer, int32_t buffer_size, bool value)
 	return true;
 }
 
-bool ogle_string_from_int8(char* buffer, int32_t buffer_size, int8_t value)
+bool ogle_string_from_int8(char* buffer, size_t buffer_size, int8_t value)
 {
 	char temp[12]; // Enough to hold -128 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%d", value);
@@ -283,7 +283,7 @@ bool ogle_string_from_int8(char* buffer, int32_t buffer_size, int8_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -291,7 +291,7 @@ bool ogle_string_from_int8(char* buffer, int32_t buffer_size, int8_t value)
 	return true;
 }
 
-bool ogle_string_from_int16(char* buffer, int32_t buffer_size, int16_t value)
+bool ogle_string_from_int16(char* buffer, size_t buffer_size, int16_t value)
 {
 	char temp[12]; // Enough to hold -32768 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%d", value);
@@ -299,7 +299,7 @@ bool ogle_string_from_int16(char* buffer, int32_t buffer_size, int16_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -307,7 +307,7 @@ bool ogle_string_from_int16(char* buffer, int32_t buffer_size, int16_t value)
 	return true;
 }
 
-bool ogle_string_from_int32(char* buffer, int32_t buffer_size, int32_t value)
+bool ogle_string_from_int32(char* buffer, size_t buffer_size, int32_t value)
 {
 	char temp[12]; // Enough to hold -2147483648 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%d", value);
@@ -315,7 +315,7 @@ bool ogle_string_from_int32(char* buffer, int32_t buffer_size, int32_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -323,7 +323,7 @@ bool ogle_string_from_int32(char* buffer, int32_t buffer_size, int32_t value)
 	return true;
 }
 
-bool ogle_string_from_int64(char* buffer, int32_t buffer_size, int64_t value)
+bool ogle_string_from_int64(char* buffer, size_t buffer_size, int64_t value)
 {
 	char temp[21]; // Enough to hold -9223372036854775808 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%lld", value);
@@ -331,7 +331,7 @@ bool ogle_string_from_int64(char* buffer, int32_t buffer_size, int64_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -339,7 +339,7 @@ bool ogle_string_from_int64(char* buffer, int32_t buffer_size, int64_t value)
 	return true;
 }
 
-bool ogle_string_from_uint8(char* buffer, int32_t buffer_size, uint8_t value)
+bool ogle_string_from_uint8(char* buffer, size_t buffer_size, uint8_t value)
 {
 	char temp[4]; // Enough to hold 255 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%u", value);
@@ -347,7 +347,7 @@ bool ogle_string_from_uint8(char* buffer, int32_t buffer_size, uint8_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -355,7 +355,7 @@ bool ogle_string_from_uint8(char* buffer, int32_t buffer_size, uint8_t value)
 	return true;
 }
 
-bool ogle_string_from_uint16(char* buffer, int32_t buffer_size, uint16_t value)
+bool ogle_string_from_uint16(char* buffer, size_t buffer_size, uint16_t value)
 {
 	char temp[6]; // Enough to hold 65535 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%u", value);
@@ -363,7 +363,7 @@ bool ogle_string_from_uint16(char* buffer, int32_t buffer_size, uint16_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -371,7 +371,7 @@ bool ogle_string_from_uint16(char* buffer, int32_t buffer_size, uint16_t value)
 	return true;
 }
 
-bool ogle_string_from_uint32(char* buffer, int32_t buffer_size, uint32_t value)
+bool ogle_string_from_uint32(char* buffer, size_t buffer_size, uint32_t value)
 {
 	char temp[11]; // Enough to hold 4294967295 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%u", value);
@@ -379,7 +379,7 @@ bool ogle_string_from_uint32(char* buffer, int32_t buffer_size, uint32_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -387,7 +387,7 @@ bool ogle_string_from_uint32(char* buffer, int32_t buffer_size, uint32_t value)
 	return true;
 }
 
-bool ogle_string_from_uint64(char* buffer, int32_t buffer_size, uint64_t value)
+bool ogle_string_from_uint64(char* buffer, size_t buffer_size, uint64_t value)
 {
 	char temp[21]; // Enough to hold 18446744073709551615 and null terminator
 	int length = snprintf(temp, sizeof(temp), "%llu", value);
@@ -395,7 +395,7 @@ bool ogle_string_from_uint64(char* buffer, int32_t buffer_size, uint64_t value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -403,7 +403,7 @@ bool ogle_string_from_uint64(char* buffer, int32_t buffer_size, uint64_t value)
 	return true;
 }
 
-bool ogle_string_from_float(char* buffer, int32_t buffer_size, float value)
+bool ogle_string_from_float(char* buffer, size_t buffer_size, float value)
 {
 	char temp[32]; // Enough to hold float representation and null terminator
 	int length = snprintf(temp, sizeof(temp), "%g", value);
@@ -411,7 +411,7 @@ bool ogle_string_from_float(char* buffer, int32_t buffer_size, float value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}
@@ -419,7 +419,7 @@ bool ogle_string_from_float(char* buffer, int32_t buffer_size, float value)
 	return true;
 }
 
-bool ogle_string_from_double(char* buffer, int32_t buffer_size, double value)
+bool ogle_string_from_double(char* buffer, size_t buffer_size, double value)
 {
 	char temp[32]; // Enough to hold double representation and null terminator
 	int length = snprintf(temp, sizeof(temp), "%g", value);
@@ -427,7 +427,7 @@ bool ogle_string_from_double(char* buffer, int32_t buffer_size, double value)
 	{
 		return false;
 	}
-	for (int32_t i = 0; i < length; ++i)
+	for (size_t i = 0; i < length; ++i)
 	{
 		buffer[i] = temp[i];
 	}

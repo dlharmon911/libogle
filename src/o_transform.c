@@ -71,9 +71,11 @@ void ogle_transform_camera_build(o_transform_t* trans, const o_camera_t* camera)
 		return;
 	}
 
+	float y = camera->m_lookat.m_y - camera->m_pitch;
+
 	al_build_camera_transform(trans, 
 		camera->m_position.m_x, camera->m_position.m_y, camera->m_position.m_z, 
-		camera->m_look_at.m_x, camera->m_look_at.m_y, camera->m_look_at.m_z, 
+		camera->m_lookat.m_x, y, camera->m_lookat.m_z, 
 		camera->m_up.m_x, camera->m_up.m_y, camera->m_up.m_z);
 }
 

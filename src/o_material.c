@@ -36,7 +36,7 @@ const o_material_t* ogle_material_get(int32_t material_id)
 {
 	if (material_id < 0 || material_id >= OGLE_MATERIAL_COUNT)
 	{
-		OGLE_DO_LOG(OGLE_LOG_LEVEL_ERROR, "Invalid material ID: %d. Must be between 0 and %d.", material_id, OGLE_MATERIAL_COUNT - 1);
+		ogle_do_log(OGLE_LOG_LEVEL_ERROR, "Invalid material ID: %d. Must be between 0 and %d.", material_id, OGLE_MATERIAL_COUNT - 1);
 		return NULL;
 	}
 

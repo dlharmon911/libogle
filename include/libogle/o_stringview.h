@@ -6,16 +6,17 @@
 typedef struct o_stringview_tag_t
 {
 	const char* m_data;
-	int32_t m_length;
+	size_t m_length;
 } o_stringview_t;
 
-o_stringview_t ogle_stringview();
-o_stringview_t ogle_stringview_buffer(const char* str, int32_t length);
+o_stringview_t ogle_stringview_empty();
+o_stringview_t ogle_stringview_buffer(const char* str, size_t length);
 o_stringview_t ogle_stringview_cstr(const char* str);
+bool ogle_stringview_is_empty(o_stringview_t view);
 const char* ogle_stringview_data(o_stringview_t view);
-int32_t ogle_stringview_length(o_stringview_t view);
-o_stringview_t ogle_stringview_ltrim_count(o_stringview_t view, int32_t count);
-o_stringview_t ogle_stringview_rtrim_count(o_stringview_t view, int32_t count);
+size_t ogle_stringview_length(o_stringview_t view);
+o_stringview_t ogle_stringview_ltrim_count(o_stringview_t view, size_t count);
+o_stringview_t ogle_stringview_rtrim_count(o_stringview_t view, size_t count);
 o_stringview_t ogle_stringview_ltrim_whitespace(o_stringview_t view);
 o_stringview_t ogle_stringview_rtrim_whitespace(o_stringview_t view);
 o_stringview_t ogle_stringview_trim_whitespace(o_stringview_t view);
@@ -39,6 +40,8 @@ o_stringview_t ogle_stringview_tokenize_i32(o_stringview_t view, int32_t* out_va
 o_stringview_t ogle_stringview_tokenize_u32(o_stringview_t view, uint32_t* out_value);
 o_stringview_t ogle_stringview_tokenize_i64(o_stringview_t view, int64_t* out_value);
 o_stringview_t ogle_stringview_tokenize_u64(o_stringview_t view, uint64_t* out_value);
-o_stringview_t ogle_stringview_file_read_line(ALLEGRO_FILE* file, char* buffer, int32_t buffer_size);
+o_stringview_t ogle_stringview_file_read_polygon(ALLEGRO_FILE* file, char* buffer, int32_t buffer_size);
+ALLEGRO_USTR* ogle_stringview_to_ustr(o_stringview_t view);
+o_stringview_t ogle_stringview_from_ustr(ALLEGRO_USTR* ustr);
 
 #endif // _HEADER_GUARD_OGLE_STRINGVIEW_H_
