@@ -142,8 +142,37 @@ int32_t ogle_stringview_icompare(o_stringview_t a, o_stringview_t b)
 	return ogle_string_icompare(a.m_data, a.m_length, b.m_data, b.m_length);
 }
 
+int32_t ogle_stringview_compare_cstr(o_stringview_t a, const char* b)
+{
+	if (NULL == b)
+	{
+		b = OGLE_EMPTY_STRING;
+	}
+
+	return ogle_string_compare(a.m_data, a.m_length, b, ogle_string_length(b));
+}
+
+int32_t ogle_stringview_icompare_cstr(o_stringview_t a, const char* b)
+{
+	if (NULL == b)
+	{
+		b = OGLE_EMPTY_STRING;
+	}
+
+	return ogle_string_icompare(a.m_data, a.m_length, b, ogle_string_length(b));
+}
+
 bool ogle_stringview_starts_with(o_stringview_t view, o_stringview_t prefix)
 {
+	if (NULL == view.m_data)
+	{
+		return false;
+	}
+	if (NULL == prefix.m_data)
+	{
+		return false;
+	}
+
 	if (prefix.m_length > view.m_length)
 	{
 		return false;
@@ -162,31 +191,19 @@ bool ogle_stringview_ends_with(o_stringview_t view, o_stringview_t suffix)
 	return ogle_string_equals(view.m_data + view.m_length - suffix.m_length, suffix.m_length, suffix.m_data, suffix.m_length);
 }
 
-bool ogle_stringview_cstr_equals_(o_stringview_t a, const char* b)
+bool ogle_stringview_equals_cstr(o_stringview_t a, const char* b)
 {
 	size_t blen = ogle_string_length(b);
 	return ogle_string_equals(a.m_data, a.m_length, b, blen);
 }
 
-bool ogle_stringview_cstr_iequals_(o_stringview_t a, const char* b)
+bool ogle_stringview_iequals_cstr(o_stringview_t a, const char* b)
 {
 	size_t blen = ogle_string_length(b);
 	return ogle_string_iequals(a.m_data, a.m_length, b, blen);
 }
 
-int32_t ogle_stringview_cstr_compare_(o_stringview_t a, const char* b)
-{
-	size_t blen = ogle_string_length(b);
-	return ogle_string_compare(a.m_data, a.m_length, b, blen);
-}
-
-int32_t ogle_stringview_cstr_icompare_(o_stringview_t a, const char* b)
-{
-	size_t blen = ogle_string_length(b);
-	return ogle_string_icompare(a.m_data, a.m_length, b, blen);
-}
-
-bool ogle_stringview_cstr_starts_with(o_stringview_t view, const char* prefix)
+bool ogle_stringview_starts_with_cstr(o_stringview_t view, const char* prefix)
 {
 	size_t plen = ogle_string_length(prefix);
 
@@ -198,7 +215,7 @@ bool ogle_stringview_cstr_starts_with(o_stringview_t view, const char* prefix)
 	return ogle_string_equals(view.m_data, plen, prefix, plen);
 }
 
-bool ogle_stringview_cstr_ends_with(o_stringview_t view, const char* suffix)
+bool ogle_stringview_ends_with_cstr(o_stringview_t view, const char* suffix)
 {
 	size_t slen = ogle_string_length(suffix);
 
@@ -219,7 +236,7 @@ o_stringview_t ogle_stringview_tokenize(o_stringview_t view, int32_t delimiter, 
 		return view;
 	}
 
-	if (!view.m_data || view.m_length <= 0)
+	if (NULL == view.m_data || view.m_length <= 0)
 	{
 		if (out_token)
 		{
@@ -250,6 +267,13 @@ o_stringview_t ogle_stringview_tokenize(o_stringview_t view, int32_t delimiter, 
 	{
 		view.m_length = 0;
 	}
+
+	if (view.m_length > strlen(view.m_data))
+	{
+		view.m_length = strlen(view.m_data);
+	}
+
+
 	return view;
 }
 
@@ -460,4 +484,31 @@ o_stringview_t ogle_stringview_from_ustr(ALLEGRO_USTR* ustr)
 	const char* data = al_cstr(ustr);
 	size_t length = al_ustr_size(ustr);
 	return (o_stringview_t) { data, length };
+}
+
+void ogle_stringview_print(o_stringview_t view)
+{
+	if (view.m_data == NULL || view.m_length <= 0)
+	{
+		printf("(empty stringview)\n");
+		return;
+	}
+
+	printf("%.*s\n", (int)view.m_length, view.m_data);
+}
+
+void ogle_stringview_fprint(ALLEGRO_FILE* file, o_stringview_t view)
+{
+	if (file == NULL)
+	{
+		return;
+	}
+	
+	if (view.m_data == NULL || view.m_length <= 0)
+	{
+		al_fputs(file, "(empty stringview)\n");
+		return;
+	}
+
+	al_fwrite(file, view.m_data, view.m_length);
 }

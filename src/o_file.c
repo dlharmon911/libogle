@@ -861,3 +861,18 @@ int32_t ogle_file_convert_to_c_array(const char* input_filename, const char* out
 	al_free(data);
 	return result;
 }
+
+int32_t ogle_file_for_each_entry(const char* basedir, int32_t(*callback)(ALLEGRO_FS_ENTRY*, void*), void* extra)
+{
+	ALLEGRO_FS_ENTRY* dir = al_create_fs_entry(basedir);
+	int32_t result = 0;
+	if (NULL == dir)
+	{
+		return 1;
+	}
+
+	result = al_for_each_fs_entry(dir, callback, extra);
+	al_destroy_fs_entry(dir);
+
+	return result;
+}

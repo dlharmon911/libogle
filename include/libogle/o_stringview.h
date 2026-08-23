@@ -24,14 +24,16 @@ bool ogle_stringview_equals(o_stringview_t a, o_stringview_t b);
 bool ogle_stringview_iequals(o_stringview_t a, o_stringview_t b);
 int32_t ogle_stringview_compare(o_stringview_t a, o_stringview_t b);
 int32_t ogle_stringview_icompare(o_stringview_t a, o_stringview_t b);
+int32_t ogle_stringview_compare_cstr(o_stringview_t a, const char* b);
+int32_t ogle_stringview_icompare_cstr(o_stringview_t a, const char* b);
 bool ogle_stringview_starts_with(o_stringview_t view, o_stringview_t prefix);
 bool ogle_stringview_ends_with(o_stringview_t view, o_stringview_t suffix);
-bool ogle_stringview_cstr_equals_(o_stringview_t a, const char* b);
-bool ogle_stringview_cstr_iequals_(o_stringview_t a, const char* b);
-int32_t ogle_stringview_cstr_compare_(o_stringview_t a, const char* b);
-int32_t ogle_stringview_cstr_icompare_(o_stringview_t a, const char* b);
-bool ogle_stringview_cstr_starts_with(o_stringview_t view, const char* prefix);
-bool ogle_stringview_cstr_ends_with(o_stringview_t view, const char* suffix);
+bool ogle_stringview_equals_cstr(o_stringview_t a, const char* b);
+bool ogle_stringview_iequals_cstr(o_stringview_t a, const char* b);
+int32_t ogle_stringview_compare_cstr(o_stringview_t a, const char* b);
+int32_t ogle_stringview_icompare_cstr(o_stringview_t a, const char* b);
+bool ogle_stringview_starts_with_cstr(o_stringview_t view, const char* prefix);
+bool ogle_stringview_ends_with_cstr(o_stringview_t view, const char* suffix);
 o_stringview_t ogle_stringview_tokenize(o_stringview_t view, int32_t delimiter, o_stringview_t* out_token);
 o_stringview_t ogle_stringview_tokenize_identifier(o_stringview_t view, o_stringview_t* out_token);
 o_stringview_t ogle_stringview_tokenize_double(o_stringview_t view, double* out_value);
@@ -43,5 +45,7 @@ o_stringview_t ogle_stringview_tokenize_u64(o_stringview_t view, uint64_t* out_v
 o_stringview_t ogle_stringview_file_read_polygon(ALLEGRO_FILE* file, char* buffer, int32_t buffer_size);
 ALLEGRO_USTR* ogle_stringview_to_ustr(o_stringview_t view);
 o_stringview_t ogle_stringview_from_ustr(ALLEGRO_USTR* ustr);
+void ogle_stringview_print(o_stringview_t view);
+void ogle_stringview_fprint(ALLEGRO_FILE* file, o_stringview_t view);
 
 #endif // _HEADER_GUARD_OGLE_STRINGVIEW_H_

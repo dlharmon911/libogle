@@ -71,11 +71,21 @@ int32_t ogle_string_icompare(const char* a, size_t alen, const char* b, size_t b
 
 bool ogle_string_equals(const char* a, size_t alen, const char* b, size_t blen)
 {
+	if (alen != blen)
+	{
+		return false;
+	}
+
 	return 0 == ogle_string_compare(a, alen, b, blen);
 }
 
 bool ogle_string_iequals(const char* a, size_t alen, const char* b, size_t blen)
 {
+	if (alen != blen)
+	{
+		return false;
+	}
+
 	return 0 == ogle_string_icompare(a, alen, b, blen);
 }
 

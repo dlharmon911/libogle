@@ -254,3 +254,36 @@ bool ogle_darray_remove(void** array, size_t index)
 	return true;
 }
 
+void* ogle_darray_get(void* array, size_t index)
+{
+	if (!array)
+	{
+		return NULL;
+	}
+
+	ogle_darray_header_t* header = _ogle_darray_get_header(array);
+
+	if (index >= header->m_size)
+	{
+		return NULL;
+	}
+
+	return (uint8_t*)_ogle_darray_get_array(header) + index * header->m_object_size;
+}
+
+const void* ogle_darray_get_const(const void* array, size_t index)
+{
+	if (!array)
+	{
+		return NULL;
+	}
+
+	const ogle_darray_header_t* header = _ogle_darray_get_header_const(array);
+
+	if (index >= header->m_size)
+	{
+		return NULL;
+	}
+
+	return (const uint8_t*)_ogle_darray_get_array_const(header) + index * header->m_object_size;
+}

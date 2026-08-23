@@ -53,7 +53,7 @@ int32_t ogle_file_write_literal(ALLEGRO_FILE* file, int32_t type, const void* va
 int32_t ogle_file_write_literal_array(ALLEGRO_FILE* file, int32_t type, const void* array, size_t size);
 int32_t ogle_file_read_literal(ALLEGRO_FILE* file, int32_t type, void* value);
 int32_t ogle_file_read_literal_array(ALLEGRO_FILE* file, int32_t type, void* array, size_t size);
-
 int32_t ogle_file_convert_to_c_array(const char* input_filename, const char* output_filename, const char* array_name);
+int32_t ogle_file_for_each_entry(const char* basedir, int32_t(*callback)(ALLEGRO_FS_ENTRY*, void*), void* extra);
 
 #endif // _HEADER_GUARD_OGLE_FILE_H_
