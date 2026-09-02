@@ -1,6 +1,11 @@
 #ifndef _HEADER_GUARD_OGLE_H_
 #define _HEADER_GUARD_OGLE_H_
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #include "libogle/o_common.h"
 #include "libogle/o_log.h"
 #include "libogle/o_config.h"
@@ -38,5 +43,8 @@
 #include "libogle/o_memchunk.h"
 #include "libogle/o_collision_2d.h"
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif // !_HEADER_GUARD_OGLE_H_
