@@ -159,6 +159,7 @@
     <ClInclude Include="include\libogle\o_camera.h" />
     <ClInclude Include="include\libogle\o_char.h" />
     <ClInclude Include="include\libogle\o_circle.h" />
+    <ClInclude Include="include\libogle\o_collision_2d.h" />
     <ClInclude Include="include\libogle\o_color.h" />
     <ClInclude Include="include\libogle\o_common.h" />
     <ClInclude Include="include\libogle\o_config.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="include\libogle\o_index_buffer.h" />
     <ClInclude Include="include\libogle\o_input.h" />
     <ClInclude Include="include\libogle\o_light.h" />
+    <ClInclude Include="include\libogle\o_line.h" />
     <ClInclude Include="include\libogle\o_literal.h" />
     <ClInclude Include="include\libogle\o_log.h" />
     <ClInclude Include="include\libogle\o_material.h" />
@@ -198,6 +200,7 @@
     <ClCompile Include="src\o_camera.c" />
     <ClCompile Include="src\o_char.c" />
     <ClCompile Include="src\o_circle.c" />
+    <ClCompile Include="src\o_collision_2d.c" />
     <ClCompile Include="src\o_color.c" />
     <ClCompile Include="src\o_config.c" />
     <ClCompile Include="src\o_darray.c" />
@@ -206,6 +209,7 @@
     <ClCompile Include="src\o_index_buffer.c" />
     <ClCompile Include="src\o_input.c" />
     <ClCompile Include="src\o_light.c" />
+    <ClCompile Include="src\o_line.c" />
     <ClCompile Include="src\o_literal.c" />
     <ClCompile Include="src\o_log.c" />
     <ClCompile Include="src\o_material.c" />

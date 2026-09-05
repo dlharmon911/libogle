@@ -64,7 +64,6 @@ int32_t ogle_mesh_add_triangle(int32_t istart, int32_t* indices, int32_t i0, int
 int32_t ogle_mesh_add_quad(int32_t istart, int32_t* indices, int32_t i0, int32_t i1, int32_t i2, int32_t i3);
 
 void ogle_mesh_data_zero(o_mesh_vertex_info_t* mesh_data);
-int32_t ogle_mesh_data_loader(o_mesh_vertex_info_t* object, void* data);
 int32_t ogle_mesh_data_initializer(o_mesh_vertex_info_t* object, void* data);
 void ogle_mesh_data_uninitializer(o_mesh_vertex_info_t* object);
 

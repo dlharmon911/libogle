@@ -135,6 +135,12 @@
     <ClInclude Include="include\libogle\o_memchunk.h">
       <Filter>Header Files\Library Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\libogle\o_collision_2d.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\libogle\o_line.h">
+      <Filter>Header Files\Library Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\o_atlas.c">
@@ -240,6 +246,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\o_memchunk.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_collision_2d.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\o_line.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
