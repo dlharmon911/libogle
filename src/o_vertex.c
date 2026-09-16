@@ -10,8 +10,9 @@ o_vertex_decl_t* ogle_vertex_decl_create()
 	{
 		{ALLEGRO_PRIM_POSITION, ALLEGRO_PRIM_FLOAT_3, offsetof(o_vertex_t, m_position)},
 		{ALLEGRO_PRIM_TEX_COORD_PIXEL, ALLEGRO_PRIM_FLOAT_2, offsetof(o_vertex_t, m_uv)},
-		{ALLEGRO_PRIM_USER_ATTR, ALLEGRO_PRIM_FLOAT_3, offsetof(o_vertex_t, m_normal)},
+		{ALLEGRO_PRIM_USER_ATTR + 0, ALLEGRO_PRIM_FLOAT_3, offsetof(o_vertex_t, m_normal)},
 		{ALLEGRO_PRIM_COLOR_ATTR, 0, offsetof(o_vertex_t, m_color)},
+		{ALLEGRO_PRIM_USER_ATTR + 1, ALLEGRO_PRIM_FLOAT_1, offsetof(o_vertex_t, m_meta)},
 		{0, 0, 0}
 	};
 
@@ -37,4 +38,5 @@ void ogle_vertex_zero(o_vertex_t* vertex)
 	vertex->m_uv = (o_vector2_t){ 0.0f, 0.0f };
 	vertex->m_normal = (o_vector3_t){ 0.0f, 0.0f, 0.0f };
 	vertex->m_color = (o_color_t){ 1.0f, 1.0f, 1.0f, 1.0f };
+	vertex->m_meta = 0.0f;
 }

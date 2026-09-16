@@ -10,6 +10,7 @@ typedef struct o_vertex_tag_t
 	o_vector2_t m_uv;
 	o_vector3_t m_normal;
 	ALLEGRO_COLOR m_color;
+	float m_meta;
 } o_vertex_t;
 
 typedef ALLEGRO_VERTEX_DECL o_vertex_decl_t;
