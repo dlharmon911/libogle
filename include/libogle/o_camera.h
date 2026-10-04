@@ -21,7 +21,6 @@ typedef struct o_camera_tag_t
 	o_vector3_t m_position;
 	o_vector3_t m_lookat;
 	o_vector3_t m_up;
-	float m_pitch;
 } o_camera_t;
 
 void ogle_camera_set_shader(const char* var_name, const o_camera_t* camera);

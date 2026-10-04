@@ -132,6 +132,21 @@ void ogle_darray_clear(void* array)
 	header->m_size = 0;
 }
 
+void ogle_darray_reset(void** array)
+{
+	if (!array || !*array)
+	{
+		return;
+	}
+
+	ogle_darray_header_t* header = _ogle_darray_get_header(*array);
+	size_t object_size = header->m_object_size;
+
+	ogle_darray_destroy(array);
+
+	*array = ogle_darray_create(object_size);	
+}
+
 size_t ogle_darray_capacity(const void* array)
 {
 	if (!array)

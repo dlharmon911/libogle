@@ -11,7 +11,7 @@ typedef struct o_texture_data_tag_t
 	bool m_apply_mask;
 } o_texture_data_t;
 
-typedef void o_texture_atlas_t;
+typedef void o_atlas_texture_t;
 
 int32_t ogle_texture_create(o_texture_t** texture, const o_texture_data_t* data);
 void ogle_texture_destroy(o_texture_t* texture);

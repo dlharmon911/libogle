@@ -10,7 +10,7 @@ typedef struct o_sample_data_tag_t
 	const char* m_filename;
 } o_sample_data_t;
 
-typedef void o_sample_atlas_t;
+typedef void o_atlas_sample_t;
 
 int32_t ogle_sample_create(o_sample_t** sample, const o_sample_data_t* data);
 void ogle_sample_destroy(o_sample_t* sample);

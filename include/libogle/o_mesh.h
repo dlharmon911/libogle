@@ -1,5 +1,5 @@
-#ifndef _HEADER_GUARD_OGLE_MESH_H_
-#define _HEADER_GUARD_OGLE_MESH_H_
+#ifndef _HEADER_GUARD_OGLE_MODEL_H_
+#define _HEADER_GUARD_OGLE_MODEL_H_
 
 #include "libogle/o_common.h"
 #include "libogle/o_vector3.h"
@@ -67,4 +67,4 @@ void ogle_mesh_data_zero(o_mesh_vertex_info_t* mesh_data);
 int32_t ogle_mesh_data_initializer(o_mesh_vertex_info_t* object, void* data);
 void ogle_mesh_data_uninitializer(o_mesh_vertex_info_t* object);
 
-#endif // _HEADER_GUARD_OGLE_MESH_H_
+#endif // _HEADER_GUARD_OGLE_MODEL_H_

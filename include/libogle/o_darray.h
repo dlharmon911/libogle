@@ -6,6 +6,7 @@
 void* ogle_darray_create(size_t object_size);
 void ogle_darray_destroy(void** array);
 void ogle_darray_clear(void* array);
+void ogle_darray_reset(void** array);
 size_t ogle_darray_capacity(const void* array);
 size_t ogle_darray_size(const void* array);
 bool ogle_darray_push_back(void** array, const void* data);

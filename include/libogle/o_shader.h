@@ -11,7 +11,7 @@ typedef struct o_shader_data_t
 	const char* m_vertex_path;
 } o_shader_data_t;
 
-typedef void o_shader_atlas_t;
+typedef void o_atlas_shader_t;
 
 int32_t ogle_shader_create(o_shader_t** shader, const o_shader_data_t* data);
 void ogle_shader_destroy(o_shader_t* shader);

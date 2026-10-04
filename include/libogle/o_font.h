@@ -21,7 +21,7 @@ typedef struct o_font_data_tag_t
 	int32_t m_type;
 } o_font_data_t;
 
-typedef void o_font_atlas_t;
+typedef void o_atlas_font_t;
 
 int32_t ogle_font_create(o_font_t** font, const o_font_data_t* data);
 void ogle_font_destroy(o_font_t* font);
